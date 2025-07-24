@@ -1,8 +1,37 @@
-arr = list(map(int, input("Enter numbers separated by space: ").split()))
-tar = int(input("Enter the target number:"))
+# This code checks if there are two numbers in the array that sum up to a target number.
+#If no such pair exists, it checks if the target number is present in the array.
 
-for i in range(len(arr)):
-    for j in range(len(arr)):
-        if arr[i]+arr[j]==tar:
-            print([i,j])
-            break
+
+print("Please enter atleast 2 numbers in the array")
+arr_size = int(input("Enter the Length of the array: "))
+arr = list(map(int, input("Enter elements separated by space: ").split()))
+
+
+if len(arr) < arr_size:
+    print("The number of elements in the array does not match the specified length.")
+elif len(arr) > arr_size:
+    print("The number of elements in the array exceeds the specified length.")
+elif arr_size < 2:
+    print("The array must contain at least two elements.")
+elif len(arr) == arr_size and arr_size >= 2:
+    print("Input is valid . Proceeding with the search...")
+    tar = int(input("Enter the target number: "))
+    Targetfound = False
+    for i in range(arr_size):
+        for j in range(i + 1, arr_size):
+            if arr[i] + arr[j] == tar:
+                print("Pair found. Elements indices are:", [i,j])
+                print("Numbers are:",[arr[i], arr[j]])
+                Targetfound = True
+                break 
+        if Targetfound:
+            break 
+    
+    
+        if not Targetfound:
+            for val in arr:
+                if val == tar:
+                    print("The target number is present in the array at index:",arr.index(val))
+                break
+        else:
+                print("No such pair found")
