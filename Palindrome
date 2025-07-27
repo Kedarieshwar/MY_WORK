@@ -1,0 +1,37 @@
+"""This program takes input from the user,
+finds out if the given input is a palindrome."""
+
+def is_palindrome(inp):
+    # This block converts integers and lists to strings for a simple comparison
+    # Slicing like inp[::-1] only works on sequence types (strings, lists, etc.)
+    # and not on integers directly.
+    if isinstance(inp, int):
+        inp = str(inp)
+    if inp == inp[::-1]:
+        print(f"The given input is a palindrome => {inp}")
+    else:
+        print("Not a Palindrome")
+
+print("""Select the datatype:
+Type "1" for Integers.
+Type "2" for String.
+Type "3" for Lists.""")
+
+
+try:
+    inp1= int(input("Type Here:"))
+    if inp1 == 1:
+        inp=int(input("Enter the Integer to check if it is a palindrome:"))
+        is_palindrome(inp)
+    elif inp1 == 2:
+        inp=input("Enter a string to check if it is a palindrome:")
+        is_palindrome(inp)
+    elif inp1 == 3:
+        inp = list(map(int, input("Enter Integer elements separated by space: ").split()))
+        is_palindrome(inp)
+    else:
+        print("Choose between 1,2,3")
+
+except ValueError:
+    print("Invalid input. Please enter a number for the selection and valid data for the palindrome check.")
+
