@@ -1,0 +1,33 @@
+# This code gives the names of students with the second highest score.
+
+st_name=[]
+marks=[]
+students=[]
+
+
+for i in range(int(input("Enter number of students(add at least 2 students):"))):
+    name = input("Enter student name:")
+    score = float(input("Enter student score:"))
+    marks.append(score)
+    st_name.append([name,score])
+
+#sorting the scores in ascending order and removing duplicates           
+unq=sorted(set(marks))
+if len(unq) == 1:
+    print("There is no second highest score.")
+    print(st_name)
+    print("Exiting the program.")
+else:
+    for i in st_name:
+            if st_name[i][1]==unq[-2]:
+                students.append(st_name[i][0])
+    
+    students.sort()
+    
+#Sorting the names of students with the second highest score
+    
+    print(st_name)
+    print(f"The students with the runner up score  ({unq[-2]}) are:")
+    for i in students:
+        print(i)
+
